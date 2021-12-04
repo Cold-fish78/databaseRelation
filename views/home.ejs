@@ -29,6 +29,31 @@
   <main>
 
     <h1>this is home page</h1>
+    <section id="feed-posts"></section>
+    <h4>Posts</h4>
+    <form action="/posts/create-post" method="POST">
+      <textarea name="content" cols="30" rows="3" placeholder="type here"></textarea>
+      <input type="submit" value="POST">
+    </form>
+
+    <div id="posts-list-container">
+      <ul>
+        <% for(post of posts){ %>
+
+          <li>
+            <p>
+              <%= post.content %>
+                <br>
+                <small>
+                  <%= post.user.name %>
+                </small>
+            </p>
+
+          </li>
+
+          <%} %>
+      </ul>
+    </div>
   </main>
   <footer></footer>
 </body>

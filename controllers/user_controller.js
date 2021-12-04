@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const Post = require('../models/post');
 const passport = require('passport');
 module.exports.profile = function (req, res) {
     // console.log(req.cookies.user_id); 

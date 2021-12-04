@@ -1,14 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    <h1>this is user profile</h1>
-    <p> <%= user.name %></p>
-    <p> <%= user.email %></p>
+    <header>
+        <ul>
+            <% if(locals.user){ %>
+                <li><a href="/user/profile">
+                        <%= user.name %>
+                    </a></li>
+
+                <li><a href="/user/signout">sign out</a></li>
+
+                <% }else{ %>
+                    <li><a href="/user/signin">Sign in</a></li>
+                    <li><a href="/user/signUP">Sign up</a></li>
+                    <% } %>
+        </ul>
+    </header>
+    <main>
+
+        <h1>this is user profile</h1>
+        <p>
+            <%= user.name %>
+        </p>
+        <p>
+            <%= user.email %>
+        </p>
+    </main>
 </body>
+
 </html>
