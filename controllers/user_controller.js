@@ -2,8 +2,12 @@ const User = require('../models/user');
 const Post = require('../models/post');
 const passport = require('passport');
 module.exports.profile = function (req, res) {
+    User.findById(req.params.id, function (err, user) {
+        return res.render('user_profile', {
+          profile_user: user
+        });
+    })
     // console.log(req.cookies.user_id); 
-    return res.render('user_profile');
 }
 module.exports.signUP = function (req, res) {
     if (req.isAuthenticated()) {
@@ -46,7 +50,7 @@ module.exports.create = function (req, res) {
 module.exports.createSession = function (req, res) {
     return res.redirect('/');
 }
-module.exports.destroySession = function(req,res){
+module.exports.destroySession = function (req, res) {
     req.logout();
     return res.redirect('/');
 }
