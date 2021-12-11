@@ -9,12 +9,22 @@
 </head>
 
 <body>
+    <header></header>
+    <% if(flash.success && flash.success.length > 0){ %>
+        <h5>
+            <%= flash.success %>
+        </h5>    
+    <% } %>
+    
+        <main>
     <h1>user sign in</h1>
     <form action="/user/create-session" method="POST">
         <input type="text" placeholder="email" name="email">
         <input type="text" placeholder="password" name="password">
         <input type="submit" value="Submit">
     </form>
+</main>
+<footer></footer>
 </body>
 
 </html>

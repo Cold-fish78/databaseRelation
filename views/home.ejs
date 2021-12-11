@@ -26,6 +26,12 @@
           <% } %>
     </ul>
   </header>
+  <% if(flash.success && flash.success.length > 0){ %>
+    <h5>
+        <%= flash.success %>
+    </h5>    
+<% } %>
+
   <main>
 
     <h1>this is home page</h1>

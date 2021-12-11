@@ -7,6 +7,14 @@
     <title>Document</title>
 </head>
 <body>
+    <header></header>
+    <% if(flash.success && flash.success.length > 0){ %>
+        <h5>
+            <%= flash.success %>
+        </h5>    
+    <% } %>
+    
+    <main>
     <h1>sign up</h1>
     <form action="/user/create" method="POST">
         <input type="text" placeholder="Your name" name="name">
@@ -14,5 +22,9 @@
         <input type="text" placeholder="password" name="password">
         <input type="text" placeholder="Confirm password" name="confirm_password">
         <input type="submit" value="Submit">
+    </main>
+    <footer>
+
+    </footer>
 </body>
 </html>
