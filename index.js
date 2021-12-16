@@ -1,8 +1,9 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const app = express();
-const port = 8003;
+const port = 8004;
 app.use(cookieParser());
+app.use(express.static('./assets'));
 const db = require('./config/mongoose');
 // imported express session for creating a session at the time of user authentication , used for session cookies
 const session = require('express-session');

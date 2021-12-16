@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -14,7 +17,7 @@
             <% if(locals.user){ %>
                 <li><a href="/user/profile">
                         <%= profile_user.name %>
-                        <%= profile_user.email %>
+                            <%= profile_user.email %>
                     </a></li>
 
                 <li><a href="/user/signout">sign out</a></li>
@@ -24,37 +27,62 @@
                     <li><a href="/user/signUP">Sign up</a></li>
                     <% } %>
         </ul>
-        <% if(user.id ==profile_user.id){ %>
+        <% if(user.id==profile_user.id){ %>
             <form action="/user/update/<%= profile_user.id %>" method="POST">
                 <input type="text" name="name" placeholder="your name" value=" <%= profile_user.name %>" required>
-            <input type="text" name="email" placeholder="your email" value=" <%= profile_user.email %>" required>
-            <input type="submit" value="Update" >
+                <input type="text" name="email" placeholder="your email" value=" <%= profile_user.email %>" required>
+                <input type="submit" value="Update">
             </form>
-      <%  } else{ %>
+            <% } else{ %>
 
-  <ul>
-      <li>  <%= profile_user.name %>
-        <%= profile_user.email %></li>
-  </ul>
-     <% } %>
+                <ul>
+                    <li>
+                        <%= profile_user.name %>
+                            <%= profile_user.email %>
+                    </li>
+                </ul>
+                <% } %>
     </header>
-    <% if(flash.success && flash.success.length > 0){ %>
+    <% if(flash.success && flash.success.length> 0){ %>
         <h5>
             <%= flash.success %>
-        </h5>    
-    <% } %>
-    
+        </h5>
         <% } %>
-    <main>
 
-        <h1>this is user profile</h1>
-        <p> 
-            <%= user.name %>
-        </p>
-        <p>
-            <%= user.email %>
-        </p>
-    </main>
+            <% } %>
+                <main>
+
+                    <h1>this is user profile</h1>
+                    <p>
+                        <%= user.name %>
+                    </p>
+                    <p>
+                        <%= user.email %>
+                    </p>
+                </main>
+                <script>
+        <% if (flash.success && flash.success.length > 0) { %>
+                        new Noty({
+                            theme: 'relax',
+                            text: "<%= flash.success %>",
+                            type: 'success',
+                            layout: 'topRight',
+                            timeout: 1500
+
+                        }).show();
+  <% } %>
+  <% if (flash.error && flash.error.length > 0) { %>
+                        new Noty({
+                            theme: 'relax',
+                            text: "<%= flash.error %>",
+                            type: 'error',
+                            layout: 'topRight',
+                            timeout: 1500
+
+                        }).show();
+  <% } %>
+
+                </script>
 </body>
 
 </html>
